@@ -31,6 +31,15 @@ code {
 .swiper-button-disabled{
   opacity: 0 !important;
 }
-text{
+.isText{
   fill: gray
+}
+
+.isTextName{
+  fill: #42567A;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
 }

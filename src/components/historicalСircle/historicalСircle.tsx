@@ -54,7 +54,7 @@ const HistoricalСircle = (props: {
 
         const svg = d3.select(svgRef.current);
         let corner = 270 / props.historyEvents.length        
-        let corner1 = 0
+        let corner1 = -0.8
 
         let x = props.cx + props.r * Math.cos(corner1)
         let y = props.cy + props.r * Math.sin(corner1)
@@ -75,6 +75,12 @@ const HistoricalСircle = (props: {
                 .attr("x", x-4)
                 .attr("y", y+5)
                 .classed('isText', true)
+
+            svg.append("text")
+                .text(`${dataHistoryEvents[activeHisEv].name}`)
+                .attr("x", x+40)
+                .attr("y", y+5)
+                .classed('isTextName', true)    
 
             corner1 = corner1 + corner    
 
@@ -114,7 +120,7 @@ const HistoricalСircle = (props: {
 
     function toBack(){
         console.log(activeHisEv)
-        if (activeHisEv > 0){
+        if (activeHisEv > 0 && document.getElementsByClassName('isText')[0]){
             setActiveHisEv(activeHisEv-1)
             const svg = svgRef.current;
             const corner = 360 / props.historyEvents.length
@@ -122,6 +128,7 @@ const HistoricalСircle = (props: {
             svg.style.transform = `rotate(${corner}deg)`
             
             document.getElementsByClassName('isText')[0].remove()
+            document.getElementsByClassName('isTextName')[0].remove()
             const svgd3 = d3.select(svgRef.current);
             svgd3.selectChild('.isCircle')
             .transition()
@@ -149,7 +156,7 @@ const HistoricalСircle = (props: {
     }
 
     function toForward(){
-        if (activeHisEv < dataHistoryEvents.length-1){
+        if (activeHisEv < dataHistoryEvents.length-1 && document.getElementsByClassName('isText')[0]){
             setActiveHisEv(activeHisEv+1)
             const svg = svgRef.current;
             const corner = 360 / props.historyEvents.length
@@ -157,6 +164,8 @@ const HistoricalСircle = (props: {
             svg.style.transform = `rotate(${-corner}deg)`
             console.log(document.getElementsByClassName('isText')[0])
             document.getElementsByClassName('isText')[0].remove()
+            document.getElementsByClassName('isTextName')[0].remove()
+            
 
             const svgd3 = d3.select(svgRef.current);
             svgd3.selectChild('.isCircle')
