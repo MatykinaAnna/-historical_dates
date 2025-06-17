@@ -31,3 +31,6 @@ code {
 .swiper-button-disabled{
   opacity: 0 !important;
 }
+text{
+  fill: gray
+}

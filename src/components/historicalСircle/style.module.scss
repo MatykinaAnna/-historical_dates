@@ -1,4 +1,24 @@
+
+
 .wrapperCircle{
     transform: rotate(0deg);
     transition: transform 1s;
+}
+
+.divButtons{
+    width: 30%;
+}
+
+.wrapperButtons{
+    z-index: 100;
+}
+
+.btnForward, .btnBack{
+    cursor: pointer;
+    width: 50px;
+}
+
+.btnForward{
+    transform: rotate(180deg);
+    width: 50px;
 }
