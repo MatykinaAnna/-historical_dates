@@ -21,6 +21,7 @@ const HistoricalСircle = (props: {
     const svgRef = useRef(null);
 
     const [dataHistoryEvents, setDataHistoryEvents] = useState(props.historyEvents)
+    const [activeHisEv, setActiveHisEv] = useState(0)
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
@@ -45,7 +46,7 @@ const HistoricalСircle = (props: {
         let corner = 270 / props.historyEvents.length        
         let corner1 = 0
 
-        for (let i=0; i< props.historyEvents.length; i++){
+        for (let i=0; i< dataHistoryEvents.length; i++){
             
             
             let x = props.cx + props.r * Math.cos(corner1)
@@ -67,6 +68,13 @@ const HistoricalСircle = (props: {
     
     return (
         <div className={style.wrapper}>
+            <div>
+                <div>{activeHisEv}/{dataHistoryEvents.length}</div>
+                <div>
+                    <button className={'btn-back'}></button>
+                    <button className={'btn-forward'}></button>
+                </div>
+            </div>
             <div className={style.wrapperCircle}>
                 <svg ref = {svgRef} width = {String(props.width)} height = {String(props.height)}> </svg>
             </div>
