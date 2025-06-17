@@ -3,6 +3,7 @@ import './App.css';
 import EventComponent from './components/event/event';
 import { interfaceEventComponent } from './shared/interface';
 import ComponentSwiper from './components/swiper/Swiper';
+import HistoricalСircle from './components/historicalСircle/historicalСircle'
 
 function App() {
 
@@ -27,6 +28,25 @@ function App() {
 
   return (
     <div className="App">
+      <div className='app_body'>
+        <div className='wrapper'>
+          <HistoricalСircle {...{
+            height: 600,
+            width: 600,
+            cx: 300,
+            cy: 300,
+            r: 200,
+            historyEvents: [
+              {id: 1, name: 'Наука'},
+              {id: 2, name: 'История'},
+              {id: 3, name: 'Культура'},
+              {id: 4, name: 'Война'},
+              {id: 5, name: 'Культура'},
+              {id: 6, name: 'Война'},
+            ]
+          }} />
+        </div>
+      </div>
       <ComponentSwiper {...{array: array}} />
     </div>
   );

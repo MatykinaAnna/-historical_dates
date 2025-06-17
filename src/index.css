@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+.app_body{
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper{
+  width: 70%;
+}
+
 .swiper-wrapper {
   margin-left: 10% !important;
 }
