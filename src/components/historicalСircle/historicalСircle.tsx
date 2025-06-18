@@ -97,8 +97,9 @@ const HistoricalСircle = (props: {
                         .style("stroke", 'gray')
                         .style("fill", color)
                         .classed(`pount point${i}`, true)
-                        //.classed(`pount`, true)
                         .on("click", (event) => clickPoint(event))
+                        .on("mouseover", (event) => mouseoverPoint(event))
+                        .on("mouseout", (event) => mouseoutPoint(event))
                 corner1 = corner1 + corner    
             } 
             for (let i=0; i< activeHisEv; i++){
@@ -114,7 +115,8 @@ const HistoricalСircle = (props: {
                         .style("fill", color)
                         .classed(`pount point${i}`, true)
                         .on("click", (event) => clickPoint(event))
-
+                        .on("mouseover", (event) => mouseoverPoint(event))
+                        .on("mouseout", (event) => mouseoutPoint(event))
                 corner1 = corner1 + corner    
             }
 
@@ -122,6 +124,40 @@ const HistoricalСircle = (props: {
         
 
     }, [dataHistoryEvents])
+
+    function mouseoverPoint(event: Event){
+        let target = event.target
+        //@ts-ignore
+        let className =  target.classList[1]
+        const svgd3 = d3.select(svgRef.current)
+        console.log(svgd3.selectChild)
+        svgd3.selectChild(`.${className}`)
+            .transition()
+                .attr("r", 20)
+                .style("fill", 'white')
+
+
+        // //@ts-ignore
+        // let cx = target.cx.animVal.value
+        // //@ts-ignore
+        // let cy = target.cy.animVal.value
+
+        // const svg = d3.select(svgRef.current);
+
+        // svg.append("circle") 
+        //     .classed('isCircleTemporal', true)
+        //     .transition()
+        //         .attr("cx", cx)
+        //         .attr("cy", cy)
+        //         .attr("r", 20)
+        //         .style("stroke", 'gray')
+        //         .style("fill", 'white')
+                
+    }
+
+    function mouseoutPoint(event: Event){
+        console.log('удалить')
+    }
 
     function clickPoint(event: Event){
         let classes = ''
