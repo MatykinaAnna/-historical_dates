@@ -31,7 +31,7 @@ code {
 .swiper-button-disabled{
   opacity: 0 !important;
 }
-.isText{
+.isText, .isTextTemporal{
   fill: gray
 }
 

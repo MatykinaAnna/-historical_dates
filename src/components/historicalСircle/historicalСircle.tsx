@@ -29,9 +29,6 @@ const HistoricalСircle = (props: {
     const [activeHisEv, setActiveHisEv] = useState(0)
 
     useEffect(() => {
-
-        console.log(dataHistoryEvents)
-
         const svg = d3.select(svgRef.current);
         const width = +svg.attr('width');
         const height = +svg.attr('height');
@@ -84,10 +81,7 @@ const HistoricalСircle = (props: {
 
             corner1 = corner1 + corner    
 
-            console.log('activeHisEv', activeHisEv)
-
             for (let i=activeHisEv+1; i< dataHistoryEvents.length; i++){
-                console.log(i)
                 x = props.cx + props.r * Math.cos(corner1)
                 y = props.cy + props.r * Math.sin(corner1)
                 svg.append("circle") 
@@ -103,7 +97,6 @@ const HistoricalСircle = (props: {
                 corner1 = corner1 + corner    
             } 
             for (let i=0; i< activeHisEv; i++){
-                console.log(i)
                 x = props.cx + props.r * Math.cos(corner1)
                 y = props.cy + props.r * Math.sin(corner1)
 
@@ -130,33 +123,36 @@ const HistoricalСircle = (props: {
         //@ts-ignore
         let className =  target.classList[1]
         const svgd3 = d3.select(svgRef.current)
-        console.log(svgd3.selectChild)
+        //@ts-ignore
+        let x = target.cx.animVal.value
+        //@ts-ignore
+        let y = target.cy.animVal.value
         svgd3.selectChild(`.${className}`)
             .transition()
                 .attr("r", 20)
                 .style("fill", 'white')
 
-
-        // //@ts-ignore
-        // let cx = target.cx.animVal.value
-        // //@ts-ignore
-        // let cy = target.cy.animVal.value
-
-        // const svg = d3.select(svgRef.current);
-
-        // svg.append("circle") 
-        //     .classed('isCircleTemporal', true)
-        //     .transition()
-        //         .attr("cx", cx)
-        //         .attr("cy", cy)
-        //         .attr("r", 20)
-        //         .style("stroke", 'gray')
-        //         .style("fill", 'white')
+        // setTimeout(()=>{
+        //     svgd3.append("text")
+        //         .classed('isTextTemporal', true)
+        //         .text(`${Number(className.split('point')[1])+1}`)
+        //         .attr("x", x-4)
+        //         .attr("y", y+5)
+        // }, 500)        
                 
     }
 
     function mouseoutPoint(event: Event){
-        console.log('удалить')
+        let target = event.target
+        //@ts-ignore
+        let className =  target.classList[1]
+        const svgd3 = d3.select(svgRef.current)
+        svgd3.selectChild(`.${className}`)
+            .transition()
+                .attr("r", 2)
+                .style("fill", 'grey')
+        svgd3.selectChild(`.isTextTemporal`)
+            .remove()
     }
 
     function clickPoint(event: Event){
@@ -166,8 +162,6 @@ const HistoricalСircle = (props: {
         let num = Number(classes.split(' ')[1].split('point')[1])
 
         setActiveHisEv(num)
-
-        //console.log(n)
 
         const svg = svgRef.current;
         const corner = 360 / props.historyEvents.length * (activeHisEv - num)
@@ -204,7 +198,6 @@ const HistoricalСircle = (props: {
     }
 
     function toBack(){
-        console.log(activeHisEv)
         if (activeHisEv > 0 && document.getElementsByClassName('isText')[0]){
             setActiveHisEv(activeHisEv-1)
             const svg = svgRef.current;
@@ -247,7 +240,6 @@ const HistoricalСircle = (props: {
             const corner = 360 / props.historyEvents.length
             //@ts-ignore
             svg.style.transform = `rotate(${-corner}deg)`
-            console.log(document.getElementsByClassName('isText')[0])
             document.getElementsByClassName('isText')[0].remove()
             document.getElementsByClassName('isTextName')[0].remove()
             
