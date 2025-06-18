@@ -41,8 +41,8 @@ function App() {
               {id: 2, name: 'История', yearStart: '1050', yearEnd: '1100'},
               {id: 3, name: 'Культура', yearStart: '1150', yearEnd: '1200'},
               {id: 4, name: 'Война', yearStart: '1250', yearEnd: '1300'},
-              {id: 5, name: 'Культура', yearStart: '1350', yearEnd: '1400'},
-              {id: 6, name: 'Культура', yearStart: '1450', yearEnd: '1500'},
+              {id: 5, name: 'Мир', yearStart: '1350', yearEnd: '1400'},
+              {id: 6, name: 'Религия', yearStart: '1450', yearEnd: '1500'},
             ]
           }} />
         </div>

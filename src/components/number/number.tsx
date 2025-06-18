@@ -7,13 +7,20 @@ const NumberTsx = (props: {
 }) => {
 
     useEffect(()=>{
+        console.log(props.start, props.end)
+        let step = 1
+        if (props.start > props.end){
+            step = step * (-1)
+        }
             var i = props.start
             let timerId = setInterval(() => {
                 //@ts-ignore
                 document.getElementById(`${props.id}`).innerHTML = String(i)
-                i = i + 1;
+                i = i + step;
     
-                if (i>props.end){
+                if (i>props.end && step>0){
+                    clearInterval(timerId);
+                } else if (i<props.end && step<0){
                     clearInterval(timerId);
                 }
             }, 30);

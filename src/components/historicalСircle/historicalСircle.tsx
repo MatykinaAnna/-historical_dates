@@ -90,7 +90,7 @@ const HistoricalСircle = (props: {
                 .classed('isText', true)
 
             svg.append("text")
-                .text(`${dataHistoryEvents[activeHisEv].name}`)
+                .text(`${dataHistoryEvents[0].name}`)
                 .attr("x", x+40)
                 .attr("y", y+5)
                 .classed('isTextName', true)    
@@ -238,12 +238,15 @@ const HistoricalСircle = (props: {
                 //@ts-ignore
                 svg.style.transition = 'transform 0s'
                 let array = []
-                for (let i=activeHisEv-1; i<dataHistoryEvents.length; i++){
+
+                for (let i=0; i>-1; i--){
                     array.push(dataHistoryEvents[i])
                 }
-                for (let i=0; i<activeHisEv-1; i++){
+                for (let i=dataHistoryEvents.length; i>1; i--){
                     array.push(dataHistoryEvents[i])
                 }
+                
+
                 setDataHistoryEvents(array)
             }, 1000)
         }
@@ -276,10 +279,10 @@ const HistoricalСircle = (props: {
                 //@ts-ignore
                 svg.style.transition = 'transform 0s'
                 let array = []
-                for (let i=activeHisEv+1; i<dataHistoryEvents.length; i++){
+                for (let i=1; i<dataHistoryEvents.length; i++){
                     array.push(dataHistoryEvents[i])
                 }
-                for (let i=0; i<activeHisEv+1; i++){
+                for (let i=0; i<1; i++){
                     array.push(dataHistoryEvents[i])
                 }
                 setDataHistoryEvents(array)
