@@ -11,6 +11,7 @@ import {
     useState
 }
 from 'react';
+import NumberTsx from '../number/number';
 
 const HistoricalСircle = (props: {
             height: number,
@@ -28,11 +29,14 @@ const HistoricalСircle = (props: {
     const [dataHistoryEvents, setDataHistoryEvents] = useState(props.historyEvents)
     const [activeHisEv, setActiveHisEv] = useState(0)
 
+    const [yearStart, setYearStart] = useState(dataHistoryEvents[0].yearStart)
+    const [yearEnd, setYearEnd] = useState(dataHistoryEvents[0].yearEnd)
+
     useEffect(() => {
         const svg = d3.select(svgRef.current);
         const width = +svg.attr('width');
         const height = +svg.attr('height');
-        
+
         if (document.getElementsByClassName('isCircle').length == 0){
             svg.attr("height", height)
             .attr("width", width);       
@@ -273,6 +277,10 @@ const HistoricalСircle = (props: {
     
     return (
         <div className={style.wrapper}>
+            <div className={style.years}>
+                <div className={style.yearStart}><NumberTsx {...{start:Number(dataHistoryEvents[0].yearStart) , end: Number(dataHistoryEvents[1].yearStart)}} /></div>
+                <div className={style.yearStart}><NumberTsx {...{start:Number(dataHistoryEvents[0].yearEnd) , end: Number(dataHistoryEvents[1].yearEnd)}} /></div>
+            </div>
             <div className={style.wrapperCircle}>
                 <svg ref = {svgRef} className={style.wrapperCircle} width = {String(props.width)} height = {String(props.height)}> </svg>
             </div>

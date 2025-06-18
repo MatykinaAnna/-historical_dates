@@ -5,5 +5,7 @@ export interface interfaceEventComponent{
 
 export interface historyEvent{
     id: number,
-    name: string
+    name: string,
+    yearStart: string,
+    yearEnd: string,
 }

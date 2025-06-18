@@ -37,12 +37,12 @@ function App() {
             cy: 300,
             r: 200,
             historyEvents: [
-              {id: 1, name: 'Наука'},
-              {id: 2, name: 'История'},
-              {id: 3, name: 'Культура'},
-              {id: 4, name: 'Война'},
-              {id: 5, name: 'Культура'},
-              {id: 6, name: 'Культура'},
+              {id: 1, name: 'Наука', yearStart: '2015', yearEnd: '2024'},
+              {id: 2, name: 'История', yearStart: '2010', yearEnd: '2015'},
+              {id: 3, name: 'Культура', yearStart: '2020', yearEnd: '2025'},
+              {id: 4, name: 'Война', yearStart: '2001', yearEnd: '2013'},
+              {id: 5, name: 'Культура', yearStart: '2018', yearEnd: '2026'},
+              {id: 6, name: 'Культура', yearStart: '2015', yearEnd: '2024'},
             ]
           }} />
         </div>

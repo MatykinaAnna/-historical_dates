@@ -5,11 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh
+}
+
+.App{
+  height: 100%;
+  width: 85%;
+  flex-grow: 1;
+
+  text-align: center;
 }
 
 .app_body{
@@ -22,7 +38,7 @@ code {
 }
 
 .swiper-wrapper {
-  margin-left: 10% !important;
+  margin-left: 7% !important;
 }
 
 .swiper-pagination {
