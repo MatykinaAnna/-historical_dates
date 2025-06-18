@@ -95,7 +95,10 @@ const HistoricalСircle = (props: {
                         .attr("cy", y)
                         .attr("r", 2)
                         .style("stroke", 'gray')
-                        .style("fill", color);
+                        .style("fill", color)
+                        .classed(`pount point${i}`, true)
+                        //.classed(`pount`, true)
+                        .on("click", (event) => clickPoint(event))
                 corner1 = corner1 + corner    
             } 
             for (let i=0; i< activeHisEv; i++){
@@ -108,7 +111,9 @@ const HistoricalСircle = (props: {
                         .attr("cy", y)
                         .attr("r", 2)
                         .style("stroke", 'gray')
-                        .style("fill", color);
+                        .style("fill", color)
+                        .classed(`pount point${i}`, true)
+                        .on("click", (event) => clickPoint(event))
 
                 corner1 = corner1 + corner    
             }
@@ -117,6 +122,50 @@ const HistoricalСircle = (props: {
         
 
     }, [dataHistoryEvents])
+
+    function clickPoint(event: Event){
+        let classes = ''
+        //@ts-ignore
+        classes = event.target.className.baseVal
+        let num = Number(classes.split(' ')[1].split('point')[1])
+
+        setActiveHisEv(num)
+
+        //console.log(n)
+
+        const svg = svgRef.current;
+        const corner = 360 / props.historyEvents.length * (activeHisEv - num)
+        //@ts-ignore
+        svg.style.transform = `rotate(${corner}deg)`
+
+        document.getElementsByClassName('isText')[0].remove()
+        document.getElementsByClassName('isTextName')[0].remove()
+        const svgd3 = d3.select(svgRef.current);
+        svgd3.selectChild('.isCircle')
+            .transition()
+                .attr("r", 2)
+                .style("fill", 'gray') 
+        //@ts-ignore
+        svg.style.transition = 'transform 1s'
+
+        setTimeout(()=>{
+            //@ts-ignore
+            svg.innerHTML = ''
+            //@ts-ignore
+            svg.style.transform = `rotate(0deg)`
+            //@ts-ignore
+            svg.style.transition = 'transform 0s'
+            let array = []
+            for (let i=num; i<dataHistoryEvents.length; i++){
+                array.push(dataHistoryEvents[i])
+            }
+            for (let i=0; i<num; i++){
+                array.push(dataHistoryEvents[i])
+            }
+            setDataHistoryEvents(array)
+        }, 1000)
+
+    }
 
     function toBack(){
         console.log(activeHisEv)
@@ -131,9 +180,9 @@ const HistoricalСircle = (props: {
             document.getElementsByClassName('isTextName')[0].remove()
             const svgd3 = d3.select(svgRef.current);
             svgd3.selectChild('.isCircle')
-            .transition()
-                .attr("r", 2)
-                .style("fill", 'gray') 
+                .transition()
+                    .attr("r", 2)
+                    .style("fill", 'gray') 
             //@ts-ignore
             svg.style.transition = 'transform 1s'
             setTimeout(()=>{
