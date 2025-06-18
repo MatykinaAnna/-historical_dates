@@ -33,6 +33,7 @@ const HistoricalСircle = (props: {
     const [yearStart1, setYearStart1] = useState(dataHistoryEvents[0].yearStart)
     const [yearEnd0, setYearEnd0] = useState(dataHistoryEvents[0].yearEnd)
     const [yearEnd1, setYearEnd1] = useState(dataHistoryEvents[0].yearEnd)
+    const [keyNumber, setKeyNumber] = useState(0)
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
@@ -71,6 +72,8 @@ const HistoricalСircle = (props: {
 
             setYearEnd0(yearEnd1)
             setYearEnd1(dataHistoryEvents[0].yearEnd)
+
+            setKeyNumber(keyNumber+1)
 
             svg.append("circle") 
                 .attr("cx", x)
@@ -287,8 +290,8 @@ const HistoricalСircle = (props: {
     return (
         <div className={style.wrapper}>
             <div className={style.years}>
-                <div className={style.yearStart}><NumberTsx {...{start:Number(yearStart0) , end: Number(yearStart1)}} /></div>
-                <div className={style.yearStart}><NumberTsx {...{start:Number(yearEnd0) , end: Number(yearEnd1)}} /></div>
+                <div className={style.yearStart}><NumberTsx key={keyNumber} {...{start:Number(yearStart0) , end: Number(yearStart1), id:'yearStart'}} /></div>
+                <div className={style.yearStart}><NumberTsx key={keyNumber} {...{start:Number(yearEnd0) , end: Number(yearEnd1), id:'yearEnd'}} /></div>
             </div>
             <div className={style.wrapperCircle}>
                 <svg ref = {svgRef} className={style.wrapperCircle} width = {String(props.width)} height = {String(props.height)}> </svg>
