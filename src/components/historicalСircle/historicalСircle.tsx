@@ -29,8 +29,10 @@ const HistoricalСircle = (props: {
     const [dataHistoryEvents, setDataHistoryEvents] = useState(props.historyEvents)
     const [activeHisEv, setActiveHisEv] = useState(0)
 
-    const [yearStart, setYearStart] = useState(dataHistoryEvents[0].yearStart)
-    const [yearEnd, setYearEnd] = useState(dataHistoryEvents[0].yearEnd)
+    const [yearStart0, setYearStart0] = useState(dataHistoryEvents[0].yearStart)
+    const [yearStart1, setYearStart1] = useState(dataHistoryEvents[0].yearStart)
+    const [yearEnd0, setYearEnd0] = useState(dataHistoryEvents[0].yearEnd)
+    const [yearEnd1, setYearEnd1] = useState(dataHistoryEvents[0].yearEnd)
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
@@ -63,6 +65,13 @@ const HistoricalСircle = (props: {
         let color = 'gray'
 
         if (document.getElementsByClassName('isCircle').length == 0){
+
+            setYearStart0(yearStart1)
+            setYearStart1(dataHistoryEvents[0].yearStart)
+
+            setYearEnd0(yearEnd1)
+            setYearEnd1(dataHistoryEvents[0].yearEnd)
+
             svg.append("circle") 
                 .attr("cx", x)
                 .attr("cy", y)
@@ -278,8 +287,8 @@ const HistoricalСircle = (props: {
     return (
         <div className={style.wrapper}>
             <div className={style.years}>
-                <div className={style.yearStart}><NumberTsx {...{start:Number(dataHistoryEvents[0].yearStart) , end: Number(dataHistoryEvents[1].yearStart)}} /></div>
-                <div className={style.yearStart}><NumberTsx {...{start:Number(dataHistoryEvents[0].yearEnd) , end: Number(dataHistoryEvents[1].yearEnd)}} /></div>
+                <div className={style.yearStart}><NumberTsx {...{start:Number(yearStart0) , end: Number(yearStart1)}} /></div>
+                <div className={style.yearStart}><NumberTsx {...{start:Number(yearEnd0) , end: Number(yearEnd1)}} /></div>
             </div>
             <div className={style.wrapperCircle}>
                 <svg ref = {svgRef} className={style.wrapperCircle} width = {String(props.width)} height = {String(props.height)}> </svg>
