@@ -3,10 +3,28 @@
 .wrapperCircle{
     transform: rotate(0deg);
     transition: transform 1s;
+    //background-color: #42567A;
 }
 
 .divButtons{
-    width: 30%;
+    width: 120px;
+    height: 88px;
+    box-sizing: border-box;
+    margin-top: 10px;
+
+    .buttons{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    div {
+        color: #42567A;
+        font-style: normal;
+        font-size: 1.2em;
+        text-align: left;
+    }
+    
 }
 
 .wrapperButtons{
@@ -21,4 +39,26 @@
 .btnForward{
     transform: rotate(180deg);
     width: 50px;
+}
+
+.years{
+    position: absolute;
+    display: flex;
+    font-size: 11em;
+    z-index: 100;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 20px;
+
+    top:20%;
+    left: 30%
+}
+
+.yearStart{
+    color: #5d5fef
+}
+.yearEnd{
+    color: #ef5da8
 }

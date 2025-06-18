@@ -31,10 +31,11 @@ code {
 .app_body{
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .wrapper{
-  width: 70%;
+  width: 85%;
 }
 
 .swiper-wrapper {

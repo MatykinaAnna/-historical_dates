@@ -31,11 +31,11 @@ function App() {
       <div className='app_body'>
         <div className='wrapper'>
           <HistoricalСircle {...{
-            height: 600,
+            height: 500,
             width: 600,
             cx: 300,
-            cy: 300,
-            r: 200,
+            cy: 250,
+            r: 250,
             historyEvents: [
               {id: 1, name: 'Наука', yearStart: '1000', yearEnd: '1050'},
               {id: 2, name: 'История', yearStart: '1050', yearEnd: '1100'},

@@ -48,6 +48,7 @@ const HistoricalСircle = (props: {
                     .attr("cx", props.cx)
                     .attr("cy", props.cy)
                     .attr("r", props.r)
+                    .classed('isMainCircle', true)
                     .style("stroke", '#d5d7da')
                     .style("fill", "none");
         }
@@ -66,13 +67,12 @@ const HistoricalСircle = (props: {
         let color = 'gray'
 
         if (document.getElementsByClassName('isCircle').length == 0){
-
             setYearStart0(yearStart1)
             setYearStart1(dataHistoryEvents[0].yearStart)
 
             setYearEnd0(yearEnd1)
             setYearEnd1(dataHistoryEvents[0].yearEnd)
-
+            
             setKeyNumber(keyNumber+1)
 
             svg.append("circle") 
@@ -146,15 +146,7 @@ const HistoricalСircle = (props: {
         svgd3.selectChild(`.${className}`)
             .transition()
                 .attr("r", 20)
-                .style("fill", 'white')
-
-        // setTimeout(()=>{
-        //     svgd3.append("text")
-        //         .classed('isTextTemporal', true)
-        //         .text(`${Number(className.split('point')[1])+1}`)
-        //         .attr("x", x-4)
-        //         .attr("y", y+5)
-        // }, 500)        
+                .style("fill", 'white')   
                 
     }
 
@@ -260,8 +252,14 @@ const HistoricalСircle = (props: {
     function toForward(){
         if (activeHisEv < dataHistoryEvents.length-1 && document.getElementsByClassName('isText')[0]){
             setActiveHisEv(activeHisEv+1)
+            //@ts-ignore
             const svg = svgRef.current;
+            //console.log(svg)
             const corner = 360 / props.historyEvents.length
+
+            //@ts-ignore
+            // let svg = document.getElementsByClassName('isMainCircle')[0]
+            // console.log(svg)
             //@ts-ignore
             svg.style.transform = `rotate(${-corner}deg)`
             document.getElementsByClassName('isText')[0].remove()
@@ -299,15 +297,15 @@ const HistoricalСircle = (props: {
         <div className={style.wrapper}>
             <div className={style.years}>
                 <div className={style.yearStart}><NumberTsx key={keyNumber} {...{start:Number(yearStart0) , end: Number(yearStart1), id:'yearStart'}} /></div>
-                <div className={style.yearStart}><NumberTsx key={keyNumber} {...{start:Number(yearEnd0) , end: Number(yearEnd1), id:'yearEnd'}} /></div>
+                <div className={style.yearEnd}><NumberTsx key={keyNumber} {...{start:Number(yearEnd0) , end: Number(yearEnd1), id:'yearEnd'}} /></div>
             </div>
             <div className={style.wrapperCircle}>
                 <svg ref = {svgRef} className={style.wrapperCircle} width = {String(props.width)} height = {String(props.height)}> </svg>
             </div>
             <div className={style.wrapperButtons}>
                 <div className={style.divButtons}>
-                    <div>{activeHisEv+1}/{dataHistoryEvents.length}</div>
-                    <div>
+                    <div>{activeHisEv+1<10 ? `0${activeHisEv+1}`:`${activeHisEv+1}`}/{dataHistoryEvents.length}</div>
+                    <div className={style.buttons}>
                         <img src={btn} onClick={toBack} className={style.btnBack} alt="btnBack" />
                         <img src={btn} onClick={toForward} className={style.btnForward} alt="btnBack" />
                     </div>

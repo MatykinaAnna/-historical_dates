@@ -8,6 +8,7 @@ const NumberTsx = (props: {
 
     useEffect(()=>{
         let step = 1
+        
         if (props.start > props.end){
             step = step * (-1)
         }
@@ -22,7 +23,7 @@ const NumberTsx = (props: {
                 } else if (i<props.end && step<0){
                     clearInterval(timerId);
                 }
-            }, 30);
+            }, 10);
         
     }, [])
 
