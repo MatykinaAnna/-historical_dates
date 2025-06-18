@@ -7,7 +7,6 @@ const NumberTsx = (props: {
 }) => {
 
     useEffect(()=>{
-        console.log(props.start, props.end)
         let step = 1
         if (props.start > props.end){
             step = step * (-1)

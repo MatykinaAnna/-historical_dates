@@ -202,10 +202,15 @@ const HistoricalСircle = (props: {
             //@ts-ignore
             svg.style.transition = 'transform 0s'
             let array = []
-            for (let i=num; i<dataHistoryEvents.length; i++){
+
+            let ind = dataHistoryEvents.findIndex(item=>item.id==num+1)
+
+            array.push(dataHistoryEvents[ind])
+
+            for (let i=ind+1; i<dataHistoryEvents.length; i++){
                 array.push(dataHistoryEvents[i])
             }
-            for (let i=0; i<num; i++){
+            for (let i=0; i<ind; i++){
                 array.push(dataHistoryEvents[i])
             }
             setDataHistoryEvents(array)
@@ -240,9 +245,9 @@ const HistoricalСircle = (props: {
                 let array = []
 
                 for (let i=0; i>-1; i--){
-                    array.push(dataHistoryEvents[i])
+                    array.push(dataHistoryEvents[dataHistoryEvents.length-1])
                 }
-                for (let i=dataHistoryEvents.length; i>1; i--){
+                for (let i=0; i<dataHistoryEvents.length-1; i++){
                     array.push(dataHistoryEvents[i])
                 }
                 
