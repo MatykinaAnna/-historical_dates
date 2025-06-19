@@ -37,8 +37,28 @@
 
   width: 100%;
   height: 100%;
+
+  z-index: -100;
 }
 
 .frame > div{
   border: solid #42567a2f 0.1px;
+}
+
+.frame >div.header{
+  color: #42567A;
+  font-size: 3.1em;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+}
+.frame >div.header > div{
+  text-align: left;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.frame >div.header > img{
+  object-fit: none
 }

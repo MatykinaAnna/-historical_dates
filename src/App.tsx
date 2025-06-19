@@ -4,6 +4,7 @@ import EventComponent from './components/event/event';
 import { interfaceEventComponent } from './shared/interface';
 import ComponentSwiper from './components/swiper/Swiper';
 import HistoricalСircle from './components/historicalСircle/historicalСircle'
+import vector from './shared/icons/vector.png'
 
 function App() {
 
@@ -31,7 +32,10 @@ function App() {
 
       <div className='frame'>
           <div></div>
-          <div></div>
+          <div className='header'>
+            <img src={vector} alt="vector" />
+            <div>Исторические даты</div>
+          </div>
           <div></div>
           <div></div>
           <div></div>
