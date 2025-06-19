@@ -50,6 +50,7 @@ const HistoricalСircle = (props: {
                     .attr("r", props.r)
                     .classed('isMainCircle', true)
                     .style("stroke", '#d5d7da')
+                    .style("zIndex", -10)
                     .style("fill", "none");
         }
         

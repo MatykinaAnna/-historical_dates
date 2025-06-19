@@ -15,9 +15,6 @@ body {
   
 }
 
-body.bg1{
-  /* background-image: url('./shared/bg/bg1.png'); */
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -44,7 +41,7 @@ code {
 .app_body{
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 25px;
 }
 
 .wrapper{
@@ -82,4 +79,10 @@ code {
 }
 .pount{
   cursor: pointer;
+}
+
+@media (max-width: 740px) {
+  .swiper-slide-active{
+    margin-left: 15%;
+  }
 }

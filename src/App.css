@@ -62,3 +62,16 @@
 .frame >div.header > img{
   object-fit: none
 }
+
+
+@media (max-width: 1060px) {
+  .frame > div{
+    border: none
+  }
+  .frame >div.header{
+    font-size: 2.5em;
+  }
+  .frame >div.header > img {
+    display: none;
+  }
+}
