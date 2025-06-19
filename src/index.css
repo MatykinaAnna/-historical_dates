@@ -6,6 +6,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+
+  
+}
+
+body.bg1{
+  /* background-image: url('./shared/bg/bg1.png'); */
 }
 
 code {
@@ -40,6 +51,12 @@ code {
   width: 85%;
 
 }
+
+.swiper{
+  height: 200px !important;
+  overflow-y: auto !important;
+}
+
 
 .swiper-wrapper {
   margin-left: 7% !important;

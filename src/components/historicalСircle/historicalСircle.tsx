@@ -19,7 +19,7 @@ const HistoricalСircle = (props: {
             cx: number,
             cy: number,
             r: number,
-
+            toYear: any,
             historyEvents: historyEvent[]
         }) => {
 
@@ -169,6 +169,7 @@ const HistoricalСircle = (props: {
         classes = event.target.className.baseVal
         let num = Number(classes.split(' ')[1].split('point')[1])
 
+        props.toYear(num)
         setActiveHisEv(num)
 
         const svg = svgRef.current;
@@ -212,6 +213,7 @@ const HistoricalСircle = (props: {
 
     function toBack(){
         if (activeHisEv > 0 && document.getElementsByClassName('isText')[0]){
+            props.toYear(activeHisEv-1)
             setActiveHisEv(activeHisEv-1)
             const svg = svgRef.current;
             const corner = 360 / props.historyEvents.length
@@ -251,6 +253,7 @@ const HistoricalСircle = (props: {
 
     function toForward(){
         if (activeHisEv < dataHistoryEvents.length-1 && document.getElementsByClassName('isText')[0]){
+            props.toYear(activeHisEv+1)
             setActiveHisEv(activeHisEv+1)
             //@ts-ignore
             const svg = svgRef.current;
