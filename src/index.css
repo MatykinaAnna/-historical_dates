@@ -26,6 +26,8 @@ code {
   flex-grow: 1;
   margin-bottom: 5vh;
   text-align: center;
+  padding-right: 50px;
+  padding-left: 7vw;
 }
 
 .app_body{

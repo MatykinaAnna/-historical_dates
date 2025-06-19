@@ -28,6 +28,16 @@ function App() {
 
   return (
     <div className="App">
+
+      <div className='frame'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+
       <div className='app_body'>
         <div className='wrapper'>
           <HistoricalСircle {...{
@@ -35,7 +45,7 @@ function App() {
             width: 600,
             cx: 300,
             cy: 250,
-            r: 250,
+            r: 220,
             historyEvents: [
               {id: 1, name: 'Наука', yearStart: '1000', yearEnd: '1050'},
               {id: 2, name: 'История', yearStart: '1050', yearEnd: '1100'},

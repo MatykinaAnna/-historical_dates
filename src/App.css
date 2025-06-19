@@ -26,20 +26,19 @@
   color: #61dafb;
 }
 
-/* .lineH{
-  height: 100vh;
-  width: 1px;
+.frame{
+  display: grid;
+  grid-template-columns: 6vw auto 50vw;
+  grid-template-rows: 380px auto;
+
   position: absolute;
   top: 0;
-  left: 10vh;
-  background-color: #42567a46;
-} */
+  right: 0;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: 100%;
+  height: 100%;
+}
+
+.frame > div{
+  border: solid #42567a2f 0.1px;
 }
