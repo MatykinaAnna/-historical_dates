@@ -3,7 +3,14 @@
 .wrapperCircle{
     transform: rotate(0deg);
     transition: transform 1s;
-    //background-color: #42567A;
+    // background-color: #42567A;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .divButtons{
@@ -52,8 +59,11 @@
     font-style: normal;
     letter-spacing: 20px;
 
-    top:20%;
-    left: 30%
+    top: 390px;
+    left: 50%;
+    /* коррекция положения элемента */
+    transform: translate(-50%, -50%);
+
 }
 
 .yearStart{

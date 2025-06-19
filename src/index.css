@@ -15,16 +15,16 @@ code {
 
 #root{
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh
+  min-height: 100vh;
+  align-items: end;
 }
 
 .App{
   height: 100%;
   width: 85%;
   flex-grow: 1;
-
+  margin-bottom: 5vh;
   text-align: center;
 }
 
@@ -36,6 +36,7 @@ code {
 
 .wrapper{
   width: 85%;
+
 }
 
 .swiper-wrapper {
